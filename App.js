@@ -1,12 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, SafeAreaView } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import {Camera} from 'expo-camera';
 
 export default function App() {
+
+  const [type, setType] = useState(Camera.Constants.Type.back);
+  const [hasPermission, setHasPermission] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const {status} = await Camera.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
+
+  if (hasPermission === null) {
+    return <View/>;
+  }
+  if (hasPermission === false) {
+    return <Text> Acesso Negado! </Text>;
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Hello World!</Text>
-      <Text>by AndreMyszko</Text>
+      <Camera 
+        style={{ flex: 1 }}
+        type={type}
+      />
     </SafeAreaView>
   );
 }
@@ -14,7 +34,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
   },
 });
