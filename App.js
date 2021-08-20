@@ -1,5 +1,18 @@
-import React, {useState, useEffect, useRef} from 'react';
-import { StatusBar, StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image } from 'react-native';
+import React, {
+  useState, 
+  useEffect, 
+  useRef,
+} from 'react';
+import { 
+  StatusBar, 
+  StyleSheet, 
+  Text, 
+  View, 
+  SafeAreaView, 
+  TouchableOpacity, 
+  Modal, 
+  Image, 
+} from 'react-native';
 import {Camera} from 'expo-camera';
 import {FontAwesome} from '@expo/vector-icons';
 
