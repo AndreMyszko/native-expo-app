@@ -6,6 +6,7 @@ import {FontAwesome} from '@expo/vector-icons';
 export default function App() {
 
   const camRef = useRef(null);
+  
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [hasPermission, setHasPermission] = useState(null);
   const [capturedPhoto, setCapturedPhoto] = useState(null);
