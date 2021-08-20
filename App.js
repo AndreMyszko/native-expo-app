@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image } from 'react-native';
+import { StatusBar, StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image } from 'react-native';
 import {Camera} from 'expo-camera';
 import {FontAwesome} from '@expo/vector-icons';
 
@@ -36,6 +36,8 @@ export default function App() {
   }
 
   return (
+    <>
+    <StatusBar barStyle="light-content" backgroundColor="#000"/>
     <SafeAreaView style={styles.container}>
       <Camera 
         style={{ flex: 1 }}
@@ -46,8 +48,11 @@ export default function App() {
           <TouchableOpacity
             style={{
               position: 'absolute',
-              bottom: 20,
-              left: 20,
+              top: 5,
+              right: 5,
+              padding: 5,
+              backgroundColor: '#000',
+              borderRadius: 5,
             }}
             onPress={ () => {
               setType(
@@ -57,13 +62,13 @@ export default function App() {
               );
             }}
           >
-            <Text style={{ fontSize: 20, marginBottom: 13, color: '#FFF'}}>Switch Camera</Text>
+            <Text style={{ fontSize: 20, color: '#FFF'}}><FontAwesome name="refresh" size={20} color="#FFF" />  Switch Camera</Text>
           </TouchableOpacity>
         </View>
-      </Camera>
       <TouchableOpacity style={styles.button} onPress={ takePicture }>
         <FontAwesome name="camera" size={25} color="#FFF"/>
       </TouchableOpacity>
+      </Camera>
 
       { capturedPhoto &&
         <Modal
@@ -84,6 +89,7 @@ export default function App() {
       }
 
     </SafeAreaView>
+    </>
   );
 }
 
