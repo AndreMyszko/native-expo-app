@@ -49,7 +49,7 @@ export default function App() {
             style={{
               position: 'absolute',
               top: 5,
-              right: 5,
+              left: 5,
               padding: 5,
               backgroundColor: '#000',
               borderRadius: 5,
@@ -64,9 +64,22 @@ export default function App() {
           >
             <Text style={{ fontSize: 20, color: '#FFF'}}><FontAwesome name="refresh" size={20} color="#FFF" />  Switch Camera</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              top: 5,
+              right: 5,
+              padding: 5,
+              backgroundColor: '#000',
+              borderRadius: 5,
+            }}
+          >
+            <Text><FontAwesome name="cog" size={26} color="#FFF" /></Text>
+          </TouchableOpacity>
+
         </View>
       <TouchableOpacity style={styles.button} onPress={ takePicture }>
-        <FontAwesome name="camera" size={25} color="#FFF"/>
+        <FontAwesome name="video-camera" size={25} color="#FFF"/>
       </TouchableOpacity>
       </Camera>
 
@@ -78,7 +91,7 @@ export default function App() {
         >
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', margin: 20 }}>
             <TouchableOpacity style={{margin: 10}} onPress={ () => setOpen(false)}>
-              <FontAwesome name="window-close" size={50} color="#FF0000"/>
+              <FontAwesome name="window-close" size={25} color="#FF0000"/>
             </TouchableOpacity>
             <Image
               style={{ width: '100%', height: 300, borderRadius: 20 }}
@@ -101,9 +114,11 @@ const styles = StyleSheet.create({
   button:{
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
+    margin: 10,
     backgroundColor: '#000',
-    margin: 20,
-    borderRadius: 10,
-    height: 50,
+    borderRadius: 180,
+    width: 55,
+    height: 55,
   }
 });
