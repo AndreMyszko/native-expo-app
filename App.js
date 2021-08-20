@@ -89,14 +89,19 @@ export default function App() {
         transparent={false}
         visible={open}
         >
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', margin: 20 }}>
-            <TouchableOpacity style={{margin: 10}} onPress={ () => setOpen(false)}>
-              <FontAwesome name="window-close" size={25} color="#FF0000"/>
-            </TouchableOpacity>
+          <View style={{ flex: 1, backgroundColor:'#000', justifyContent: 'center', alignItems: 'center'}}>
             <Image
               style={{ width: '100%', height: 300, borderRadius: 20 }}
               source={{ uri: capturedPhoto }}
             />
+            <Text>
+              <TouchableOpacity style={{backgroundColor: '#64F093', borderRadius: 5}} onPress={ () => setOpen(false)}>
+                <FontAwesome name="check" size={45} color="#FFF"/>
+              </TouchableOpacity>
+              <TouchableOpacity style={{backgroundColor: '#FF5C5C', borderRadius: 5}} onPress={ () => setOpen(false)}>
+                <FontAwesome name="close" size={45} color="#FFF" style={{width: 47, textAlign: 'center'}}/>
+              </TouchableOpacity>
+            </Text>
           </View>
         </Modal>
       }
