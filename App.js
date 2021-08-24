@@ -62,6 +62,7 @@ export default function App() {
         <TouchableOpacity style={[styles.button, {alignSelf: 'flex-end'}]}>
           <FontAwesome name="info-circle" size={30} color="#000"/>
         </TouchableOpacity>
+
         <View style={styles.bottomCenter}>
 
           <TouchableOpacity style={styles.button}>
@@ -84,7 +85,9 @@ export default function App() {
           </TouchableOpacity>
 
         </View>
+
       </Camera>
+      
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
@@ -114,6 +117,8 @@ export default function App() {
           </View>
         </Modal>
       }
+
+
     </SafeAreaView>
     </>
   );
