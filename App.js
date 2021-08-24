@@ -135,8 +135,10 @@ export default function App() {
         visible={openInfo}
         >
           <ScrollView>
-            <Text>Hello World!</Text>
-            <Text>By: Wololooo</Text>
+            <View>
+              <Text>Hello World!</Text>
+              <Text>By: Wololooo</Text>
+            </View>
           </ScrollView>
         </Modal>
       }
