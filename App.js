@@ -13,6 +13,7 @@ import {
   Modal, 
   Image, 
   TextInput,
+  ScrollView,
 } from 'react-native';
 import {Camera} from 'expo-camera';
 import {FontAwesome} from '@expo/vector-icons';
@@ -20,11 +21,14 @@ import {FontAwesome} from '@expo/vector-icons';
 export default function App() {
 
   const camRef = useRef(null);
-  
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [hasPermission, setHasPermission] = useState(null);
   const [capturedPhoto, setCapturedPhoto] = useState(null);
-  const [open, setOpen] = useState(false);
+  const [openCamera, setOpenCamera] = useState(false);
+  
+  const [infoModal, setInfoModal] = useState(null);
+  const [openInfo, setOpenInfo] = useState(null);
+
   const [text, onChangeText] = React.useState(null);
 
   useEffect(() => {
@@ -45,9 +49,15 @@ export default function App() {
     if (camRef) {
       const data = await camRef.current.takePictureAsync();
       setCapturedPhoto(data.uri);
-      setOpen(true);
+      setOpenCamera(true);
       console.log(data);
     }
+  }
+
+  async function goToInfoPage() {
+    setInfoModal(true);
+    setOpenInfo(true);
+    console.log("*info modal*");
   }
 
   return (
@@ -59,7 +69,7 @@ export default function App() {
         type={type}
         ref={camRef}
       >
-        <TouchableOpacity style={[styles.button, {alignSelf: 'flex-end'}]}>
+        <TouchableOpacity style={[styles.button, {alignSelf: 'flex-end'}]} onPress={ goToInfoPage }>
           <FontAwesome name="info-circle" size={30} color="#000"/>
         </TouchableOpacity>
 
@@ -87,7 +97,7 @@ export default function App() {
         </View>
 
       </Camera>
-      
+
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
@@ -99,7 +109,7 @@ export default function App() {
         <Modal
         animationType="slide"
         transparent={false}
-        visible={open}
+        visible={openCamera}
         >
           <View style={{ flex: 1, backgroundColor:'#000', justifyContent: 'center', alignItems: 'center'}}>
             <Image
@@ -107,14 +117,27 @@ export default function App() {
               source={{ uri: capturedPhoto }}
             />
             <Text>
-              <TouchableOpacity style={{backgroundColor: '#64F093', borderRadius: 5}} onPress={ () => setOpen(false)}>
+              <TouchableOpacity style={{backgroundColor: '#64F093', borderRadius: 5}} onPress={ () => setOpenCamera(false)}>
                 <FontAwesome name="check" size={45} color="#FFF"/>
               </TouchableOpacity>
-              <TouchableOpacity style={{backgroundColor: '#FF5C5C', borderRadius: 5}} onPress={ () => setOpen(false)}>
+              <TouchableOpacity style={{backgroundColor: '#FF5C5C', borderRadius: 5}} onPress={ () => setOpenCamera(false)}>
                 <FontAwesome name="close" size={45} color="#FFF" style={{width: 47, textAlign: 'center'}}/>
               </TouchableOpacity>
             </Text>
           </View>
+        </Modal>
+      }
+
+      { infoModal &&
+        <Modal
+        animationType="slide"
+        transparent={false}
+        visible={openInfo}
+        >
+          <ScrollView>
+            <Text>Hello World!</Text>
+            <Text>By: Wololooo</Text>
+          </ScrollView>
         </Modal>
       }
 
