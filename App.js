@@ -12,6 +12,7 @@ import {
   TouchableOpacity, 
   Modal, 
   Image, 
+  TextInput,
 } from 'react-native';
 import {Camera} from 'expo-camera';
 import {FontAwesome} from '@expo/vector-icons';
@@ -24,6 +25,7 @@ export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const [open, setOpen] = useState(false);
+  const [text, onChangeText] = React.useState(null);
 
   useEffect(() => {
     (async () => {
@@ -61,6 +63,7 @@ export default function App() {
           <FontAwesome name="info-circle" size={30} color="#000"/>
         </TouchableOpacity>
         <View style={styles.bottomCenter}>
+
           <TouchableOpacity style={styles.button}>
             <FontAwesome name="trash" size={20} color="#000"/>
           </TouchableOpacity>
@@ -80,9 +83,14 @@ export default function App() {
             <FontAwesome name="refresh" size={20} color="#000"/>
           </TouchableOpacity>
 
-
         </View>
       </Camera>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+        placeholder="aguardando para traduzir..."
+      />
 
       { capturedPhoto &&
         <Modal
@@ -136,5 +144,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     width: 150,
-  }
+  },
+  input: {
+    height: 40,
+    paddingHorizontal: 15,
+  },
 });
