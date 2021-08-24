@@ -57,43 +57,31 @@ export default function App() {
         type={type}
         ref={camRef}
       >
-        <View style={{flex: 1, backgroundColor: 'Transparent', flexDirection: 'row'}}>
-          <TouchableOpacity
-            style={{
-              position: 'absolute',
-              top: 5,
-              left: 5,
-              padding: 5,
-              backgroundColor: '#000',
-              borderRadius: 5,
-            }}
+        <TouchableOpacity style={[styles.button, {alignSelf: 'flex-end'}]}>
+          <FontAwesome name="info-circle" size={30} color="#000"/>
+        </TouchableOpacity>
+        <View style={styles.bottomCenter}>
+          <TouchableOpacity style={styles.button}>
+            <FontAwesome name="trash" size={20} color="#000"/>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={[styles.button, {width:70, height:70,}]} onPress={ takePicture }>
+            <FontAwesome name="video-camera" size={40} color="#000"/>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button} 
             onPress={ () => {
               setType(
                 type === Camera.Constants.Type.back
                 ? Camera.Constants.Type.front
                 : Camera.Constants.Type.back
               );
-            }}
-          >
-            <Text style={{ fontSize: 20, color: '#FFF'}}><FontAwesome name="refresh" size={20} color="#FFF" />  Switch Camera</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              position: 'absolute',
-              top: 5,
-              right: 5,
-              padding: 5,
-              backgroundColor: '#000',
-              borderRadius: 5,
-            }}
-          >
-            <Text><FontAwesome name="cog" size={26} color="#FFF" /></Text>
+            }}>
+            <FontAwesome name="refresh" size={20} color="#000"/>
           </TouchableOpacity>
 
+
         </View>
-      <TouchableOpacity style={styles.button} onPress={ takePicture }>
-        <FontAwesome name="video-camera" size={25} color="#FFF"/>
-      </TouchableOpacity>
       </Camera>
 
       { capturedPhoto &&
@@ -118,7 +106,6 @@ export default function App() {
           </View>
         </Modal>
       }
-
     </SafeAreaView>
     </>
   );
@@ -133,10 +120,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    margin: 10,
-    backgroundColor: '#000',
+    flexDirection: 'row',
+    backgroundColor: '#FFF',
     borderRadius: 180,
-    width: 55,
-    height: 55,
+    width: 40,
+    height: 40,
+    margin: 5,
+    marginBottom: 0,
+  },
+  bottomCenter: {
+    position: 'absolute',
+    bottom: 5,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: 150,
   }
 });
