@@ -145,8 +145,8 @@ export default function App() {
         >
           <ScrollView style={{backgroundColor: '#000'}}>
             <View>
-              <TouchableOpacity style={{backgroundColor: '#FF5C5C', borderRadius: 5, alignSelf: 'flex-end', position: 'absolute', top: 10, right: 10, paddingHorizontal: 6,}} onPress={ () => setInfoModal(false)}>
-                <FontAwesome name="close" size={40} color="#FFF" style={{}} />
+              <TouchableOpacity style={{backgroundColor: '#FF5C5C', borderRadius: 180, alignSelf: 'flex-end', position: 'absolute', top: 10, right: 10,}} onPress={ () => setInfoModal(false)}>
+                <FontAwesome name="chevron-left" size={35} color="#FFF" style={{margin:5, paddingHorizontal:25}} />
               </TouchableOpacity>
             </View>
             <View style={[styles.infoContent, {marginTop: 23}]}>
@@ -161,7 +161,7 @@ export default function App() {
                 width: 340,
               }}/>
             </View>
-            <View style={[styles.infoContent, {marginTop: 20, paddingTop: 30, backgroundColor: '#222', width: '100%'}]}>
+            <View style={[styles.infoContent, {marginTop: 20,  paddingBottom: 60, paddingTop: 30, backgroundColor: '#222', width: '100%'}]}>
               <Text style={{color: '#FFF', fontSize: 25,}}><FontAwesome name="book" size={30} color="#FFF"/> MANUAL </Text>
               <Text style={{color: '#FFF', fontSize: 15, width: 340, marginBottom: 10}}>Bem vindo ao manual simplificado e-libras de aprendizado de sinais básicos em libras, aqui irá encontrar o que precisa saber para utilizar este aplicativo! </Text>
 
@@ -213,8 +213,12 @@ export default function App() {
                   marginBottom: 10,
                 }}/>
               </View>
-
             </View>
+              <View>
+                <TouchableOpacity style={{backgroundColor: '#FF5C5C', borderRadius: 180,  position: 'absolute', bottom: 10, }} onPress={ () => setInfoModal(false)}>
+                  <FontAwesome name="chevron-left" size={35} color="#FFF" style={{margin:5, paddingHorizontal:50}} />
+                </TouchableOpacity>
+              </View>
           </ScrollView>
         </Modal>
       }
