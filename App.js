@@ -26,6 +26,21 @@ import ManualText from './assets/img/ManualTextArea.png'
 import ManualClear from './assets/img/ManualClearText.png'
 import ManualStart from './assets/img/ManualStartStop.png'
 
+//imports tensorflow
+
+import {
+  getModel,
+  convertBase64ToTensor,
+  startPrediction
+} from './helpers/tensor-helper';
+import {cropPicture} from './helpers/image-helper';
+
+//imports tensorflow
+
+
+
+
+
 export default function App() {
 
   const camRef = useRef(null);
@@ -38,6 +53,28 @@ export default function App() {
   const [openInfo, setOpenInfo] = useState(null);
 
   const [text, onChangeText] = React.useState(null);
+
+  //const tensorflow
+  
+  //TODO erro está aparecendo na linha 9 do arquivo tensor-helper.js
+
+  const RESULT_MAPPING = ['0','1','2','3','4','5'];
+  const [presentedShape, setPresentedShape] = useState('');
+  const processImagePrediction = async (base64Image) => {
+    const croppedData = await cropPicture(base64Image, 300);
+    const model = await getModel();
+    const tensor = await convertBase64ToTensor(croppedData.base64);
+
+    const prediction = await startPrediction(model, tensor);
+    
+    const highestPrediction = prediction.indexOf(
+      Math.max.apply(null, prediction),
+    );
+    setPresentedShape(RESULT_MAPPING[highestPrediction]);
+  };
+
+  //const tensorflow
+
 
   useEffect(() => {
     (async () => {
