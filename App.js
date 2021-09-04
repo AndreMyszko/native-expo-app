@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 import { 
   StatusBar, 
-  StyleSheet, 
   Text, 
   View, 
   SafeAreaView, 
@@ -15,6 +14,7 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
+import styles from '../native-expo-app/Style.js';
 import {Camera} from 'expo-camera';
 import {FontAwesome} from '@expo/vector-icons';
 
@@ -228,40 +228,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  button:{
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    flexDirection: 'row',
-    backgroundColor: '#FFF',
-    borderRadius: 180,
-    width: 40,
-    height: 40,
-    margin: 5,
-    marginBottom: 0,
-  },
-  bottomCenter: {
-    position: 'absolute',
-    bottom: 5,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: 150,
-  },
-  input: {
-    height: 40,
-    paddingHorizontal: 15,
-  },
-  infoContent: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-  },
-});
