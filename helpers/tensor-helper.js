@@ -1,12 +1,13 @@
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';
 import {bundleResourceIO, decodeJpeg} from '@tensorflow/tfjs-react-native';
+import { BinaryFile } from 'react-native-binary-file';
 
 import {Base64Binary} from '../helpers/utils.js';
 const BITMAP_DIMENSION = 224;
 
 const modelJson = require('../model/model.json');
-const modelWeights = require('../model/weights.bin');
+const modelWeights = await BinaryFile.open('../model/weights.bin');
 
 // 0: channel from JPEG-encoded image
 // 1: gray scale

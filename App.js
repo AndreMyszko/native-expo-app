@@ -18,13 +18,13 @@ import {
 import {Camera} from 'expo-camera';
 import {FontAwesome} from '@expo/vector-icons';
 
-import Alfabeto from './assets/img/AlfabetoLibras.png'
-import Numeros from './assets/img/NumerosLibras.png'
-import ManualVideo from './assets/img/ManualVideoSensor.png'
-import ManualSwitch from './assets/img/ManualSwitchCamera.png'
-import ManualText from './assets/img/ManualTextArea.png'
-import ManualClear from './assets/img/ManualClearText.png'
-import ManualStart from './assets/img/ManualStartStop.png'
+//import Alfabeto from './assets/img/AlfabetoLibras.png'
+// import Numeros from './assets/img/NumerosLibras.png'
+// import ManualVideo from './assets/img/ManualVideoSensor.png'
+// import ManualSwitch from './assets/img/ManualSwitchCamera.png'
+// import ManualText from './assets/img/ManualTextArea.png'
+// import ManualClear from './assets/img/ManualClearText.png'
+//import ManualStart from './assets/img/ManualStartStop.png'
 
 //imports tensorflow
 
@@ -188,12 +188,12 @@ export default function App() {
             </View>
             <View style={[styles.infoContent, {marginTop: 23}]}>
               <Text style={{color: '#FFF', fontSize: 25,}}><FontAwesome name="map" size={20} color="#FFF"/> GLOSSÁRIO</Text>
-              <Image source={Alfabeto} style={{
+              {/* <Image source={Alfabeto} style={{
                 height: 420,
                 width: 340,
                 marginTop: 10,
-              }}/>
-              <Image source={Numeros} style={{
+              }}/> */}
+              <Image source={'./assets/img/NumerosLibras.png'} style={{
                 height: 165,
                 width: 340,
               }}/>
@@ -205,15 +205,15 @@ export default function App() {
               <View style={{backgroundColor: '#000', padding: 10, borderRadius: 8,}}>
                 <Text style={{color: '#FFF', fontSize: 18,}}><FontAwesome name="image" size={50} color="#FFF"/> Imagem </Text>
                 <Text style={{color: '#FFF', fontSize: 15, width: 340}}>Apenas o movimento da sua mão direita será considerado para o retorno em texto, como mostra a imagem abaixo: </Text>
-                <Image source={ManualVideo} style={{
+                {/* <Image source={ManualVideo} style={{
                   height: 165,
                   width: 340,
                   marginTop: 10,
                   marginBottom: 10,
-                }}/>
+                }}/> */}
                 <Text style={{color: '#FFF', fontSize: 18, marginTop:10,}}><FontAwesome name="refresh" size={25} color="#FFF"/> Switch de Câmera </Text>
                 <Text style={{color: '#FFF', fontSize: 15, width: 340}}>O botão responsável pela troca de câmera entre frontal ou traseira está localizado na parte inferior da tela, como mostra a imagem abaixo: </Text>
-                <Image source={ManualSwitch} style={{
+                <Image source={'./assets/img/ManualSwitchCamera.png'} style={{
                   height: 130,
                   width: 340,
                   marginTop: 10,
@@ -224,31 +224,31 @@ export default function App() {
               <View style={{backgroundColor: '#000', padding: 10, borderRadius: 8, width: 360, marginTop: 10,}}>
                 <Text style={{color: '#FFF', fontSize: 18,}}><FontAwesome name="file-text" size={50} color="#FFF"/> Texto </Text>
                 <Text style={{color: '#FFF', fontSize: 15, width: 340}}>Quando um sinal é captado pela câmera, este será transformado em texto e apresentado na parte inferior da tela, como mostra a imagem abaixo: </Text>
-                <Image source={ManualText} style={{
+                {/* <Image source={ManualText} style={{
                   height: 130,
                   width: 340,
                   marginTop: 10,
                   marginBottom: 10,
-                }}/>
+                }}/> */}
                 <Text style={{color: '#FFF', fontSize: 18, marginTop:10,}}><FontAwesome name="trash" size={25} color="#FFF"/> Limpar Texto </Text>
                 <Text style={{color: '#FFF', fontSize: 15, width: 340}}>Também é possível limpar o campo de texto pressionando o botão localizado ao lado direito inferior da tela, como mostra a imagem abaixo: </Text>
-                <Image source={ManualClear} style={{
+                {/* <Image source={ManualClear} style={{
                   height: 130,
                   width: 340,
                   marginTop: 10,
                   marginBottom: 10,
-                }}/>
+                }}/> */}
               </View>
 
               <View style={{backgroundColor: '#000', padding: 10, borderRadius: 8, width: 360, marginTop: 10, marginBottom: 10,}}>
                 <Text style={{color: '#FFF', fontSize: 18,}}><FontAwesome name="play" size={25} color="#FFF"/> <FontAwesome name="stop" size={25} color="#FFF"/> Start e Pause </Text>
                 <Text style={{color: '#FFF', fontSize: 15, width: 340}}>O botão de start e pause são os mesmo, se encontram na mesma posição, como mostra a imagem abaixo: </Text>
-                <Image source={ManualStart} style={{
+                {/* <Image source={ManualStart} style={{
                   height: 130,
                   width: 340,
                   marginTop: 10,
                   marginBottom: 10,
-                }}/>
+                }}/> */}
               </View>
             </View>
               <View>
