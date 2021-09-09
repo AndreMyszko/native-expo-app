@@ -25,6 +25,9 @@ import ManualSwitch from './assets/img/ManualSwitchCamera.png'
 import ManualText from './assets/img/ManualTextArea.png'
 import ManualClear from './assets/img/ManualClearText.png'
 import ManualStart from './assets/img/ManualStartStop.png'
+ 
+
+import axios from 'axios';
 
 export default function App() {
 
@@ -33,6 +36,7 @@ export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const [openCamera, setOpenCamera] = useState(false);
+  const [B64State, setB64State] = useState('')
   
   const [infoModal, setInfoModal] = useState(null);
   const [openInfo, setOpenInfo] = useState(null);
@@ -52,13 +56,29 @@ export default function App() {
   if (hasPermission === false) {
     return <Text> Acesso Negado! </Text>;
   }
-
+ 
   async function takePicture() {
     if (camRef) {
-      const data = await camRef.current.takePictureAsync();
-      setCapturedPhoto(data.uri);
-      setOpenCamera(true);
-      console.log(data);
+      const data = await camRef.current.takePictureAsync({
+        base64: true,
+      }).then(data => {
+          setCapturedPhoto(data.uri);
+          setB64State(data.base64);
+          setOpenCamera(true);
+          const url = data.uri;
+          console.log(B64State);
+        });
+
+      // -------# # #--------
+      const B64String = B64State
+      const b64JsonText = '{"data":"'+B64String+'"}'
+      axios.post(`http://192.168.0.13:5000/post`, { B64State })
+      .then(res => {
+        //returna no res.data a img em b64
+        // console.log(res.data);
+      })
+
+      // TODO Converter img para base64 ou outra forma de enviar img por post 
     }
   }
 
@@ -66,7 +86,27 @@ export default function App() {
     setInfoModal(true);
     setOpenInfo(true);
     console.log("*info modal*");
+    getDataUsingSimpleGetCall();
   }
+
+  const getDataUsingSimpleGetCall = () => {
+    axios
+      .get('http://192.168.0.13:5000/hts')
+      .then(function (response) {
+        // handle success
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error.message);
+      })
+      .finally(function () {
+        // always executed
+        console.log('Finally called');
+      });
+  };
+
+
 
   return (
     <>
